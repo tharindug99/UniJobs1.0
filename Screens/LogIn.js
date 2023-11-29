@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, Button, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Button, Image, TouchableOpacity, StyleSheet } from 'react-native';
 
 export class LogIn extends Component {
   constructor(props) {
@@ -31,6 +31,9 @@ export class LogIn extends Component {
       <View style={styles.container}>
         <Text style={styles.heading}>Log In</Text>
 
+        <Text style={styles.description}>Join with UniJobs, the largest undergraduate job seeking platform in Sri Lanka !</Text>
+
+        <View style={styles.formContainer}>
         <TextInput
           style={styles.input}
           placeholder="Username"
@@ -54,10 +57,12 @@ export class LogIn extends Component {
         </TouchableOpacity>
 
         <View style={styles.footer}>
-          <Text>Don't have an account?</Text>
+          {/* <Text>Don't have an account?</Text> */}
           <TouchableOpacity  onPress={() => navigation.navigate('SignUp')} >
-            <Text>Sign Up</Text>
+            {/* <Text>Sign Up</Text> */}
           </TouchableOpacity>
+        </View>
+        <Image source={require('../assets/images/login_1.png')} style={styles.image} />
         </View>
       </View>
     );
@@ -67,15 +72,21 @@ export class LogIn extends Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor:'#fff',
-    flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 20,
   },
+  formContainer:{
+    flexDirection:"column",
+    marginTop:35,
+    alignItems:"center",
+    },
+  
   heading: {
-    fontSize: 24,
+    fontSize: 36,
     fontWeight: 'bold',
     marginBottom: 20,
+    marginTop:50,
+    textAlign:'left'
   },
   input: {
     height: 60,
@@ -88,17 +99,24 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     alignItems:'center'
   },
+  iconContainer:{
+    flexDirection:'row',
+    justifyContent:'space-between',
+    width:'50%',
+    paddingVertical:10
+    },
   footer: {
-    marginTop: 4,
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom:5
+    justifyContent: 'center',
+    marginTop: 4,
+    marginBottom: 10,
   },
   image: {
-    marginTop: 50,
+    marginTop: 2,
     width: 250, // specify the width as needed
     height: 250, // specify the height as needed
-    resizeMode: 'contain', // adjust the resizeMode as needed
+    marginBottom:60 // adjust the resizeMode as needed
   },
   primarybtn:{
     width: 300,
@@ -127,6 +145,10 @@ const styles = StyleSheet.create({
   primarybtnText:{
     fontSize: 20,
     color:'#fff'
+  },
+  description:{
+    paddingBottom:30,
+    fontSize:20
   }
 });
 

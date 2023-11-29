@@ -6,6 +6,7 @@ import Home from './Screens/Home';
 import Splash_Screen from './Screens/Splash_Screen';
 import SignUp from './Screens/SignUp';
 import LogIn from './Screens/LogIn';
+import OptionsSelection from './Screens/OptionsSelection';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
@@ -32,6 +33,7 @@ function MyStack() {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Splash_Screen" component={Splash_Screen} />
       <Stack.Screen name="SignUp" component={SignUp} />
+      <Stack.Screen name="OptionsSelection" component={OptionsSelection} />
       <Stack.Screen name="LogIn" component={LogIn} />
       <Stack.Screen name="Home" component={Home} />
     </Stack.Navigator>

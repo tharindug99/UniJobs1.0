@@ -7,6 +7,7 @@ import * as AuthSession from 'expo-auth-session';
 
 export class SignUp extends Component {
   
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -17,6 +18,17 @@ export class SignUp extends Component {
   }
 
   render() {
+    const { navigation } = this.props;
+
+    handleSignUp = () => {
+        // Add your signup logic here
+        // This could involve calling an API to register the user
+        // or updating state if using local state management
+        console.log('Signing up:', this.state);
+
+        // Navigate to the OptionsSelection screen
+        this.props.navigation.navigate('OptionsSelection');
+    }
 
     handleGoogleClick = () => {
       // Add logic for Google icon click
@@ -33,7 +45,7 @@ export class SignUp extends Component {
       alert('LinkedIn icon clicked');
     };
 
-    const { navigation } = this.props;
+    
     
     const icons ={
       facebookIcon : <Image source={require('../assets/icons/facebook.png')} style={{width:50, height:50}} />,
@@ -54,17 +66,11 @@ export class SignUp extends Component {
       'DMSans-Bold': require('../assets/fonts/DMSans-Bold.ttf')
     };
 
-    handleSignUp = () => {
-      // Add your signup logic here
-      // This could involve calling an API to register the user
-      // or updating state if using local state management
-      console.log('Signing up:', this.state);
-    };
 
     return (
       <ScrollView>
       <View style={styles.container}>
-        {/* <Image source={require('../assets/images/login_1.png')} style={styles.image} /> */}
+        
         <Text style={styles.heading}>Join Us Now..</Text>
 
         <Text style={styles.description}>Join with UniJobs, the largest undergraduate job seeking platform in Sri Lanka !</Text>
@@ -90,7 +96,7 @@ export class SignUp extends Component {
           onChangeText={(password) => this.setState({ password })}
         />
 
-        <Text>-Or Continue With-</Text>
+        <Text style={{marginTop:20}}>-Or Continue With-</Text>
         {/* Icons here */}
         <View style={styles.iconContainer}>    
       <TouchableOpacity onPress={handleGoogleClick}>
@@ -113,7 +119,7 @@ export class SignUp extends Component {
         
         </View>
         
-        <TouchableOpacity style={styles.primarybtn} onPress={this.handleSignUp}>
+        <TouchableOpacity style={styles.primarybtn} onPress={handleSignUp}>
             <Text style={styles.primarybtnText}>Sign Up</Text>
         </TouchableOpacity>
 
@@ -122,10 +128,10 @@ export class SignUp extends Component {
             Already have an account?{' '}
           </Text>
           <TouchableOpacity onPress={() => this.props.navigation.navigate('LogIn')}>
-              <Text style={{ color: '#019F99', marginBottom:1}}> Login</Text>
+              <Text style={{ color: '#019F99'}}> Login</Text>
           </TouchableOpacity>
         </View>
-
+        
     
       </View>
       </View>
@@ -167,14 +173,14 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     justifyContent:'space-between',
     width:'50%',
-    paddingVertical:10
+    paddingVertical:20
     },
   footer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 4,
-    marginBottom: 150,
+    marginBottom: 115,
   },
   image: {
     marginTop: 50,
