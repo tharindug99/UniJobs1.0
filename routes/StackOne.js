@@ -13,9 +13,9 @@ export class StackOne extends Component {
     return (
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Splash" component={Splash_Screen} />
+        <Stack.Screen name="LogIn" component={LogIn} />
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="OptionsSelection" component={OptionsSelection} />
-        <Stack.Screen name="LogIn" component={LogIn} />
         <Stack.Screen name="Home" component={Home} />
       </Stack.Navigator>
     );

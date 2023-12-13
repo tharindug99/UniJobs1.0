@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, TextInput, Button, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import Home from './Home';
+import Tabs from '../routes/Tabs';
 
 export class LogIn extends Component {
   constructor(props) {
@@ -17,7 +19,7 @@ export class LogIn extends Component {
     console.log('Logging in:', this.state);
 
     // Navigate to the Home screen after successful login
-    this.props.navigation.navigate('Home');
+    this.props.navigation.navigate('Tabs');
   };
 
   handleForgotPassword = () => {
@@ -29,7 +31,7 @@ export class LogIn extends Component {
     const { navigation } = this.props;
     return (
       <View style={styles.container}>
-        <Text style={styles.heading}>Log In</Text>
+        <Text style={styles.heading}>Welcome back!</Text>
 
         <Text style={styles.description}>Join with UniJobs, the largest undergraduate job seeking platform in Sri Lanka !</Text>
 
@@ -57,9 +59,9 @@ export class LogIn extends Component {
         </TouchableOpacity>
 
         <View style={styles.footer}>
-          {/* <Text>Don't have an account?</Text> */}
+          <Text>Don't have an account?</Text>
           <TouchableOpacity  onPress={() => navigation.navigate('SignUp')} >
-            {/* <Text>Sign Up</Text> */}
+            <Text style={{color:'#019F99', paddingVertical:10}}> Sign Up</Text>
           </TouchableOpacity>
         </View>
         <Image source={require('../assets/images/login_1.png')} style={styles.image} />

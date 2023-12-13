@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
   footer:{
     fontSize: 30,
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: 10,
     marginTop: 10,
     paddingRight:20,
     textAlign: 'right',

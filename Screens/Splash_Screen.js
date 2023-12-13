@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ScrollView, SafeAreaView, Image, StyleSheet, View } from 'react-native';
-import SignUp from './SignUp';
+import LogIn from './LogIn'
 
 const Stack = createNativeStackNavigator();
 
@@ -34,7 +34,7 @@ const Splash_Screen = () => {
   } else {
     return (
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name=" " component={SignUp} />
+        <Stack.Screen name=" " component={LogIn} />
       </Stack.Navigator>
     );
   }
