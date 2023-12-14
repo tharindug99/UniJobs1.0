@@ -55,7 +55,7 @@ export class Home extends Component {
 
         <ImageBackground
           source={require('../assets/images/bg-1.png')}
-          style={[styles.fixed, styles.container, { zIndex: -1 }, { opacity: 0.3 }]}
+          style={[styles.fixed, styles.container, { zIndex: -1 }, { opacity: 0.1 }]}
         />
       </View>
     );

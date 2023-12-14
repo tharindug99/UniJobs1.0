@@ -40,7 +40,7 @@ const RecentJobs = () => {
     <View>
       <Text style={styles.title}>Recent Jobs</Text>
       <FlatList
-        data={expanded ? jobData : jobData.slice(0, 1)} // Show all or only the first item
+        data={expanded ? jobData : jobData.slice(0, 2)} // Show all or only the first item
         showsVerticalScrollIndicator={false}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
@@ -54,7 +54,7 @@ const RecentJobs = () => {
       />
       {!expanded && (
         <TouchableOpacity onPress={handleShowAll} style={styles.showAll}>
-          <Text>Show All</Text>
+          <Text style={{color:'#fff'}}>Show All</Text>
         </TouchableOpacity>
       )}
     </View>
@@ -85,11 +85,13 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   showAll: {
-    backgroundColor: '#e0e0e0',
-    borderRadius: 8,
+    backgroundColor: '#000',
+    color:'#fff',
+    borderRadius: 10,
     padding: 16,
     justifyContent: 'center',
     alignItems: 'center',
+    marginHorizontal:15
   },
 });
 
