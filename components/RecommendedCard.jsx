@@ -1,7 +1,11 @@
 import React from 'react';
 import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import JobOpportunity from './JobDetails/JobOpportunity';
 
 const RecommendedCard = () => {
+  const navigation = useNavigation();
+
   const jobData = [
     {
       title: 'Software Engineer',
@@ -28,6 +32,11 @@ const RecommendedCard = () => {
     console.log('See More pressed!');
   };
 
+  const handleCardPress = () => {
+    // Navigate to the Job Opportunity screen
+    navigation.navigate('JobOpportunity');
+  };
+
   return (
     <View>
       <View style={styles.titleContainer}>
@@ -35,7 +44,7 @@ const RecommendedCard = () => {
         <TouchableOpacity style={styles.seeMoreButton} onPress={handleSeeMorePress}>
           <Text style={styles.seeMoreButtonText}>See More</Text>
         </TouchableOpacity>
-        </View> 
+      </View>
       <View style={styles.container}>
         <FlatList
           data={jobData}
@@ -43,12 +52,14 @@ const RecommendedCard = () => {
           showsHorizontalScrollIndicator={false}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({ item }) => (
-            <View style={styles.jobCard}>
-              <Text style={styles.jobTitle}>{item.title}</Text>
-              <Text>{item.company}</Text>
-              <Text>Wages: {item.wages}</Text>
-              <Text>Location: {item.location}</Text>
-            </View>
+            <TouchableOpacity onPress={handleCardPress}>
+              <View style={styles.jobCard}>
+                <Text style={styles.jobTitle}>{item.title}</Text>
+                <Text>{item.company}</Text>
+                <Text>Wages: {item.wages}</Text>
+                <Text>Location: {item.location}</Text>
+              </View>
+            </TouchableOpacity>
           )}
         />
       </View>

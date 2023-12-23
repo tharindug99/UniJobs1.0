@@ -1,56 +1,82 @@
 import * as React from "react";
-import { Text, StyleSheet, View, Image } from "react-native";
+import { Text, StyleSheet, View, Image, FlatList } from "react-native";
+import { FontAwesome } from '@expo/vector-icons'; // You can replace this with your preferred icon library
 
 const Settings = () => {
+  const settingsData = [
+    {
+      id: "1",
+      title: "Account Settings",
+      icon: "cogs",
+      description: "Manage your account details",
+    },
+    {
+      id: "2",
+      title: "Notifications",
+      icon: "bell",
+      description: "Configure your notification preferences",
+    },
+    {
+      id: "3",
+      title: "Privacy",
+      icon: "lock",
+      description: "Adjust your privacy settings",
+    },
+    // Add more settings items as needed
+  ];
+
+  const renderItem = ({ item }) => (
+    <View style={styles.settingItem}>
+      <FontAwesome name={item.icon} size={24} color="#019f99" style={styles.settingIcon} />
+      <View>
+        <Text style={styles.settingTitle}>{item.title}</Text>
+        <Text style={styles.settingDescription}>{item.description}</Text>
+      </View>
+    </View>
+  );
+
   return (
     <View style={styles.allSetToGo}>
-      <Text style={styles.youAreSet}>You are set to go now..</Text>
-      <Image
-        style={styles.tickCircleSvgrepocomIcon}
-        source={require("../assets/images/tick.png")}
-      />
-      <Image
-        style={styles.okRafiki11}
-        source={require("../assets/images/All_set_to_go.png")}
+      
+      <FlatList
+        data={settingsData}
+        keyExtractor={(item) => item.id}
+        renderItem={renderItem}
+        style={styles.settingsList}
       />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  youAreSet: {
-    marginLeft: -129,
-    top: 451,
-    left: "50%",
-    fontSize: 32,
-    letterSpacing: 3.7,
-    lineHeight: 34,
-    fontWeight: "500",
-    color: "#019f99",
-    textAlign: "center",
-    width: 262,
-    height: 100,
-    position: "absolute",
+  
+  settingItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ddd',
   },
-  tickCircleSvgrepocomIcon: {
-    top: 591,
-    left: 125,
-    width: 112,
-    height: 107,
-    position: "absolute",
+  settingIcon: {
+    marginRight: 16,
   },
-  okRafiki11: {
-    top: 100,
-    left: 28,
-    width: 305,
-    height: 278,
-    position: "absolute",
+  settingTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#333',
+  },
+  settingDescription: {
+    color: '#777',
+  },
+  settingsList: {
+    marginTop: 10, // Adjust the marginTop to position the list below the "You are all set to go!" text
   },
   allSetToGo: {
     backgroundColor: "#fff",
     flex: 1,
     width: "100%",
-    height: 800,
+    height: "100%",
     overflow: "hidden",
   },
 });

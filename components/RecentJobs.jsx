@@ -42,7 +42,7 @@ const RecentJobs = () => {
   return (
     <View>
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>Recommended Jobs</Text>
+        <Text style={styles.title}>Recent Jobs</Text>
         <TouchableOpacity style={styles.seeMoreButton} onPress={handleSeeMorePress}>
           <Text style={styles.seeMoreButtonText}>See More</Text>
         </TouchableOpacity>
