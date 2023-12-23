@@ -32,15 +32,23 @@ const RecentJobs = () => {
     // Add more recent job objects as needed
   ];
 
-  const handleShowAll = () => {
-    setExpanded(!expanded);
+  
+
+  const handleSeeMorePress = () => {
+    // Add your logic for handling the "See More" button press here
+    console.log('See More pressed!');
   };
 
   return (
     <View>
-      <Text style={styles.title}>Recent Jobs</Text>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>Recommended Jobs</Text>
+        <TouchableOpacity style={styles.seeMoreButton} onPress={handleSeeMorePress}>
+          <Text style={styles.seeMoreButtonText}>See More</Text>
+        </TouchableOpacity>
+        </View>
       <FlatList
-        data={expanded ? jobData : jobData.slice(0, 2)} // Show all or only the first item
+        data={jobData} // Show all or only the first item
         showsVerticalScrollIndicator={false}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
@@ -52,11 +60,6 @@ const RecentJobs = () => {
           </View>
         )}
       />
-      {!expanded && (
-        <TouchableOpacity onPress={handleShowAll} style={styles.showAll}>
-          <Text style={{color:'#fff'}}>Show All</Text>
-        </TouchableOpacity>
-      )}
     </View>
   );
 };
@@ -68,6 +71,25 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     marginVertical: 20,
     marginLeft: 10,
+  },
+  titleContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginHorizontal: 10,
+    marginVertical: 10,
+  },
+  seeMoreButton: {
+    backgroundColor: '#3498db', // Add your preferred background color
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+    marginLeft: 10,
+    alignSelf: 'center',
+  },
+  seeMoreButtonText: {
+    color: 'white', // Add your preferred text color
+    fontWeight: 'bold',
   },
   jobCard: {
     backgroundColor: 'white',

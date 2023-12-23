@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, FlatList, StyleSheet } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 
 const RecommendedCard = () => {
   const jobData = [
@@ -10,23 +10,32 @@ const RecommendedCard = () => {
       location: 'San Francisco, CA',
     },
     {
-        title: 'Software Engineer',
-        company: 'TechCo',
-        wages: '$100,000',
-        location: 'San Francisco, CA',
-      },
-      {
-        title: 'Software Engineer',
-        company: 'TechCo',
-        wages: '$100,000',
-        location: 'San Francisco, CA',
-      },
-    
+      title: 'Software Engineer',
+      company: 'TechCo',
+      wages: '$100,000',
+      location: 'San Francisco, CA',
+    },
+    {
+      title: 'Software Engineer',
+      company: 'TechCo',
+      wages: '$100,000',
+      location: 'San Francisco, CA',
+    },
   ];
+
+  const handleSeeMorePress = () => {
+    // Add your logic for handling the "See More" button press here
+    console.log('See More pressed!');
+  };
 
   return (
     <View>
-      <Text style={styles.title}>Recommended Jobs</Text>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>Recommended Jobs</Text>
+        <TouchableOpacity style={styles.seeMoreButton} onPress={handleSeeMorePress}>
+          <Text style={styles.seeMoreButtonText}>See More</Text>
+        </TouchableOpacity>
+        </View> 
       <View style={styles.container}>
         <FlatList
           data={jobData}
@@ -53,11 +62,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'left',
     marginVertical: 20,
-    marginLeft:10
+    marginLeft: 10,
   },
   container: {
+    flexDirection: 'row', // to place the "See More" button next to the FlatList
     padding: 10,
-    marginLeft:1
+    marginLeft: 1,
   },
   jobCard: {
     backgroundColor: 'white',
@@ -71,8 +81,27 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 3,
   },
+  titleContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginHorizontal: 10,
+    marginVertical: 10,
+  },
   jobTitle: {
     fontSize: 18,
+    fontWeight: 'bold',
+  },
+  seeMoreButton: {
+    backgroundColor: '#3498db', // Add your preferred background color
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+    marginLeft: 10,
+    alignSelf: 'center',
+  },
+  seeMoreButtonText: {
+    color: 'white', // Add your preferred text color
     fontWeight: 'bold',
   },
 });
