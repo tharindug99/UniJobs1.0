@@ -173,10 +173,34 @@ function MyStack() {
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="OptionsSelection" component={OptionsSelection} />
       <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="RecommendedCard" component={RecommendedCard} />
-      <Stack.Screen name="JobOpportunity" component={JobOpportunity} />
+      <Stack.Screen name="RecommendedCard" 
+                    component={RecommendedCard} />
+      <Stack.Screen name="JobOpportunity" component={JobOpportunity}
+                      options={{
+                        headerShown: true,
+                        title: 'View Job info..', 
+                        headerStyle: {
+                          backgroundColor: '#000', 
+                        },
+                        headerTintColor: '#fff', 
+                        headerTitleStyle: {
+                          fontWeight: 'bold',
+                        },
+                      }} />
       <Stack.Screen name="Profile" component={Profile} />
-      <Stack.Screen name="EditUGProfile" component={EditUGProfile} />
+      <Stack.Screen name="EditUGProfile" 
+                    component={EditUGProfile} 
+                    options={{
+                      headerShown: true,
+                      title: 'Edit User Profile', // Set your header title here
+                      headerStyle: {
+                        backgroundColor: '#000', // Customize the header background color
+                      },
+                      headerTintColor: '#fff', // Customize the header text color
+                      headerTitleStyle: {
+                        fontWeight: 'bold',
+                      },
+                    }}/>
       <Stack.Screen name="Tabs" component={Tabs} />
     </Stack.Navigator>
   );

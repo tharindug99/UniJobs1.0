@@ -4,6 +4,10 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native';
+
+// import Animated from 'react-native-reanimated';
+// import BottomSheet from 'reanimated-bottom-sheet';
+
 import { SafeAreaView,ImageBackground, View, Text, Button,TextInput, ScrollView, TouchableOpacity, StyleSheet, Image, Platform } from 'react-native';
 import { Avatar,  
           Card, 
@@ -13,10 +17,13 @@ import { Avatar,
           Paragraph } from 'react-native-paper';
 
 
-
+         
 
 export class EditUGProfile extends Component {
   render() {
+
+   
+    
     return (
       <ScrollView>
       <View style={styles.container}>
@@ -126,6 +133,7 @@ export class EditUGProfile extends Component {
 
 const styles = StyleSheet.create({
     container: {
+      marginTop:50,
       flex:1,
     },
     commandButton:{
