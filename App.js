@@ -2,9 +2,7 @@ import * as React from 'react';
 import { useCallback } from 'react';
 import { Button, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import RecommendedCard from './components/RecommendedCard';
-import JobOpportunity from './components/JobDetails/JobOpportunity';
-import {Home, SignUp, LogIn, OptionsSelection, Settings, JobsApplied, Notifications, Profile} from './index';
+import {Home, SignUp,EditUGProfile,RecommendedCard,JobOpportunity, LogIn, OptionsSelection, Settings, JobsApplied, Notifications, Profile} from './index';
 import Tabs from './routes/Tabs';
 import Splash_Screen from './Screens/Splash_Screen';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -177,6 +175,8 @@ function MyStack() {
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="RecommendedCard" component={RecommendedCard} />
       <Stack.Screen name="JobOpportunity" component={JobOpportunity} />
+      <Stack.Screen name="Profile" component={Profile} />
+      <Stack.Screen name="EditUGProfile" component={EditUGProfile} />
       <Stack.Screen name="Tabs" component={Tabs} />
     </Stack.Navigator>
   );
