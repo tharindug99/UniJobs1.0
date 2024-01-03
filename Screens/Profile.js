@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, ScrollView, TouchableOpacity, StyleSheet, Image } from 'react-native';
-import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
+import EditUGProfile from './EditUGProfile';
+import { useNavigation } from '@react-navigation/native';
+import { SafeAreaView, View, Text, Button,TextInput, ScrollView, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { Avatar,  
+          Card, 
+          Title,
+          Caption,
+          TouchableRipple, 
+          Paragraph } from 'react-native-paper';
+
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Profile = () => {
   const [name, setName] = useState('John Doe');
@@ -12,7 +21,6 @@ const Profile = () => {
   const [profilePicture, setProfilePicture] = useState(null);
 
   const handleSave = () => {
-    // Implement save functionality
     console.log('Profile Saved!');
   };
 
@@ -36,118 +44,158 @@ const Profile = () => {
     setExperience(updatedExperience);
   };
 
+
+  const navigation = useNavigation();
+
+  const handleEditProfile = () =>{
+    navigation.navigate(EditUGProfile)
+  }
+
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.profileContainer}>
-        <Avatar.Image size={100} source={profilePicture ? { uri: profilePicture } : require('../assets/images/kemal.jpg')} />
-        <Button mode="contained" style={{backgroundColor:'#019F99'}} onPress={() => console.log('Change Profile Picture')}>
-          Change Picture
-        </Button>
-      </View>
-      <Card style={styles.Card}>
-        <Card.Content>
-          <Title>Edit Personal Information</Title>
-          <Text style={styles.labelText}>Full Name</Text>
-          <TextInput
-            label="Name"
-            value={name}
-            onChangeText={(text) => setName(text)}
-            style={styles.input}
-            labelPosition="left"
-          />
-          <Text style={styles.labelText}>Contact No.</Text>
-          <TextInput
-            label="NIC"
-            value={nic}
-            onChangeText={(text) => setNIC(text)}
-            style={styles.input}
-            labelPosition="left"
-          />
-          <Text style={styles.labelText}>Age</Text>
-          <TextInput
-            label="Age"
-            value={age}
-            onChangeText={(text) => setAge(text)}
-            style={styles.input}
-          />
-          <Text style={styles.labelText}>Residential Address</Text>
-          <TextInput
-            label="Address"
-            value={address}
-            onChangeText={(text) => setAddress(text)}
-            style={styles.input}
-          />
-        </Card.Content>
-      </Card>
-      <Card style={styles.Card}>
-        <Card.Content>
-          <Title>Academic Qualifications</Title>
-          {qualifications.map((qualification, index) => (
-            <View key={index} style={styles.listItem}>
-              <Text>{qualification}</Text>
-              <TouchableOpacity onPress={() => handleDeleteQualification(index)}>
-                <Text style={styles.deleteText}>Delete</Text>
-              </TouchableOpacity>
+   
+      <SafeAreaView style={styles.container}>
+        <View style={styles.userInfoSection}>
+          <View style={{flexDirection:'row',}}>
+          <Avatar.Image 
+              size={80} 
+              source={{ uri: profilePicture ? profilePicture : "https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png"}}/>
+        
+            
+            <View style={{marginLeft:20}}>
+              <Title style={styles.title}>John Doe</Title>
+              <Caption style={styles.caption}>@John_Doe</Caption>
             </View>
-          ))}
-          <Button mode="outlined" style={{backgroundColor:'#000', borderColor:'white'}} onPress={handleAddQualification}>
-            <Text style={{color:'#fff'}}>Add Qualification</Text> 
-          </Button>
-        </Card.Content>
-      </Card>
-      <Card style={styles.Card}>
-        <Card.Content>
-          <Title>Work Experience</Title>
-          {experience.map((exp, index) => (
-            <View key={index} style={styles.listItem}>
-              <Text>{exp}</Text>
-              <TouchableOpacity onPress={() => handleDeleteExperience(index)}>
-                <Text style={styles.deleteText}>Delete</Text>
-              </TouchableOpacity>
+          <TouchableOpacity onPress={handleEditProfile}>
+            <Icon name="account-edit" size={30} marginLeft={80} color="#888888"/>
+          </TouchableOpacity>
+          
+          </View>
+        </View>
+
+
+
+          <View style={styles.userInfoSection}>
+            <View style={styles.row}>
+              <Icon name="map-marker-radius" size={20} color="#888888"/>
+              <Text style={{color:"#888888", marginLeft: 20, }}>Colombo, Sri Lanka</Text>
             </View>
-          ))}
-          <Button mode="outlined" style={{backgroundColor:'#000', borderColor:'white'}} onPress={handleAddExperience}>
-          <Text style={{color:'#fff'}}>Add Work Experience</Text>
-          </Button>
-        </Card.Content>
-      </Card>
-      <Button mode="contained" onPress={handleSave} style={styles.saveButton}>
-        Save Profile
-      </Button>
-    </ScrollView>
+
+            <View style={styles.row}>
+              <Icon name="phone" size={20} color="#888888"/>
+              <Text style={{color:"#888888", marginLeft: 20 }}>+94 715 482 488</Text>
+            </View>
+
+            <View style={styles.row}>
+              <Icon name="email" size={20} color="#888888"/>
+              <Text style={{color:"#888888", marginLeft: 20 }}>jonhdoe@gmail.com</Text>
+            </View>
+
+            <View style={styles.row}>
+              <Icon name="human" size={20} color="#888888"/>
+              <Text style={{color:"#888888", marginLeft: 20 }}>199926015426</Text>
+            </View>
+
+            <View style={styles.row}>
+              <Icon name="school" size={20} color="#888888"/>
+              <Text style={{color:"#888888", marginLeft: 20 }}>Sabaragamuwa University of Sri Lanka</Text>
+            </View>
+
+            
+          </View>
+
+          <View style={styles.menuWrapper}>
+            <TouchableRipple onPress={() => {}}>
+              <View style={styles.menuItem}>
+                 <Icon name="heart-outline" color="#ff0000" size={25} marginVertical={17}/> 
+                 <Text style={styles.menuItemText}>Favourites</Text>    
+              </View>
+            </TouchableRipple>
+
+            <TouchableRipple onPress={() => {}}>
+              <View style={styles.menuItem}>
+                 <Icon name="heart-outline" color="#ff0000" size={25} marginVertical={17}/> 
+                 <Text style={styles.menuItemText}>Favourites</Text>    
+              </View>
+            </TouchableRipple>
+
+            <TouchableRipple onPress={() => {}}>
+              <View style={styles.menuItem}>
+                 <Icon name="heart-outline" color="#ff0000" size={25} marginVertical={17}/> 
+                 <Text style={styles.menuItemText}>Favourites</Text>    
+              </View>
+            </TouchableRipple>
+
+            <TouchableRipple onPress={() => {}}>
+              <View style={styles.menuItem}>
+                 <Icon name="heart-outline" color="#ff0000" size={25} marginVertical={17}/> 
+                 <Text style={styles.menuItemText}>Favourites</Text>    
+              </View>
+            </TouchableRipple>
+
+            <TouchableRipple onPress={() => {}}>
+              <View style={styles.menuItem}>
+                 <Icon name="heart-outline" color="#ff0000" size={25} marginVertical={17}/> 
+                 <Text style={styles.menuItemText}>Favourites</Text>    
+              </View>
+            </TouchableRipple>
+          </View>
+        
+      </SafeAreaView>
+    
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    padding: 16,
-  },
-  profileContainer: {
-    alignItems: 'center',
-    marginBottom: 16,
+    flex:1,
     margin:20
   },
-  input: {
-    marginBottom: 16,
+  userInfoSection: {
+    paddingHorizontal:30,
+    marginBottom:25
   },
-  listItem: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 8,
+  title: {
+    fontSize:24,
+    fontWeight:'bold',
+    marginTop:14
   },
-  deleteText: {
-    color: 'red',
+  caption: {
+    fontSize:14,
+    lineHeight:14,
+    fontWeight:'500',
   },
-  saveButton: {
-    marginTop: 16,
-    backgroundColor:'#019F99', 
-    borderColor:'white'
+  row:{
+    flexDirection:'row',
+    marginBottom:10
   },
-  labelText:{
-    fontWeight:'900'
+  infoBoxWrapper:{
+    borderBottomColor:'#dddddd',
+    borderBottomWidth:1,
+    borderTopColor:'#dddddd',
+    borderTopWidth:1,
+    flexDirection:'row',
+    height:100,
   },
-  Card:{
-    margin:10
+  infoBox:{
+    width:'50%',
+    alignItems:'center',
+    justifyContent:'center'
+  },
+  menuWrapper:{
+    marginTop:10
+  },
+  menuItem:{
+    flexDirection:'row',
+    paddingVertical:15,
+    paddingHorizontal:30
+  },
+  menuItemText:{
+    color:'#777777',
+    marginLeft: 20,
+    marginVertical:15,
+    fontWeight:'600',
+    fontSize:16,
+    lineHeight:26,
   }
 });
 
