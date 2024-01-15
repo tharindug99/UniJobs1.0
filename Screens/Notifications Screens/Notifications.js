@@ -63,7 +63,7 @@ export class Notifications extends Component {
         </ScrollView>
         <ImageBackground
           style={[styles.fixed, styles.container, { zIndex: -1 }]}
-          source={require('../assets/images/bg-1.png')}
+          source={require('../../assets/images/bg-1.png')}
         />
       </View>
     );
