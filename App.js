@@ -297,8 +297,8 @@ function MyStack() {
 
 {/* --------------JobsApplied Screens--------------------------- */}
 
-          <Stack.Screen name="StatusofJobsApplied" component={StatusofJobsApplied} />
-          <Stack.Screen name="JobsApplied" component={JobsApplied} />
+<Stack.Screen name="StatusofJobsApplied" component={StatusofJobsApplied} />
+<Stack.Screen name="JobsApplied" component={JobsApplied} />
         
 {/* --------------End  JobsApplieds Screens--------------------------- */}  
 
